@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis">
+    <select id="listBirds" resultType="Bird">
+        select * from test.bird
+    </select>
+    <insert id="addBird" parameterType="Bird">
+        insert into bird (name, age) values (#{name}, #{age});
+    </insert>
+    <delete id="deleteBird" parameterType="Bird">
+        delete from bird where id=#{id}
+    </delete>
+    <select id="selectBird" parameterType="_int" resultType="Bird">
+        select * from bird where id = #{id}
+    </select>
+    <update id="updateBird" parameterType="Bird">
+        update bird set name=#{name} where id=#{id}
+    </update>
+    <select id="selectBirdByName" parameterType="String" resultType="Bird">
+        select * from bird where name like concat('%', #{name}, '%')
+    </select>
+    <select id="selectBirdByIdAndName" parameterType="map" resultType="Bird">
+        select * from bird where id>#{id} and name like concat('%', #{name},'%')
+    </select>
+
+</mapper>
