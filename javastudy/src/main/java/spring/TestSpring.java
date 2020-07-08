@@ -21,6 +21,7 @@ public class TestSpring {
 
         //切面编程
         ProductService ps = (ProductService) context.getBean("s");
+        context.getType("s");
         ps.doService();
     }
 
